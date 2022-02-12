@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SagaDemoAngular": {
+    "SagaAngularDemo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SagaDemoAngular",
+            "outputPath": "dist/SagaAngularDemo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,9 +30,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              
+              "src/assets/css/bootstrap.rtl.min.css",
+              "src/assets/css/fontawesome.min.css",
+              "src/styles.css",
+              "src/assets/css/new-style.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/newsTicker.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -68,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SagaDemoAngular:build:production"
+              "browserTarget": "SagaAngularDemo:build:production"
             },
             "development": {
-              "browserTarget": "SagaDemoAngular:build:development"
+              "browserTarget": "SagaAngularDemo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SagaDemoAngular:build"
+            "browserTarget": "SagaAngularDemo:build"
           }
         },
         "test": {
@@ -102,5 +114,5 @@
       }
     }
   },
-  "defaultProject": "SagaDemoAngular"
+  "defaultProject": "SagaAngularDemo"
 }

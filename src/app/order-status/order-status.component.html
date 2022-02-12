@@ -1,0 +1,82 @@
+
+<div class="container">
+  <div class="row">
+     <div class="col-8">
+      <form [formGroup]="OrderFormgroup" class="p-5" (ngSubmit)="AddOrder()">
+       
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="">Amount</label>
+          <input type="number" class="form-control" formControlName="amount">
+        </div>
+        <div class="form-group">
+            <label for="">Notes</label>
+            <input type="text" class="form-control" formControlName="notes" >
+          
+          </div>
+        <button type="submit" [disabled]="OrderFormgroup.invalid"  class="btn btn-primary">+ Add Order</button>
+    </form>
+     </div>
+  </div>
+  <div class="row">
+     <div class="col-12">
+      <h1>الطلبات</h1>
+      <table class="table table-border">
+         <thead class="thead-dark">
+         <tr>
+             <th>Id</th> 
+             <th>Name</th>
+              <th>Amount</th> 
+             <th>CreatedDate</th>
+             <th>Notes</th>
+             <th>Agree</th>
+             <th>DisAgree</th>
+          </tr>
+         </thead>
+             <tr *ngFor="let item of rowdata">
+              <td>{{item.id}}</td> 
+              <td>{{item.name}}</td>
+              <td>{{item.amount}}</td> 
+              <td>{{item.createdDate}}</td> 
+              <td>{{item.notes}}</td> 
+              <td><button class="btn btn-success" (click)="AcceptOrder(item.id)"> Accept</button></td> 
+              <td><button class="btn btn-danger" (click)="RejectOrder(item.id)"> Reject</button></td> 
+             </tr>
+      </table>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2>النتائج</h2>
+      <table class="table table-striped">
+         <thead class="thead-dark">
+         <tr>
+             <th>Id</th> 
+             <th>Name</th>
+              <th>Amount</th> 
+              <th>Status</th>
+              <th>Notes</th>
+             <th>CreatedDate</th>
+          </tr>
+         </thead>
+             <tr *ngFor="let item of allorders" class="">
+                 <td>{{item.id}}</td> 
+             <td>{{item.name}}</td>
+              <td>{{item.amount}}</td> 
+              <td [ngClass]="[item.status==0 ? 'bg-success text-white' :'', item.status==1 ? 'p-3 mb-2 bg-danger text-white':'', item.status==2 ? 'p-3 mb-2 bg-warning text-white':'' ]" >{{Status[item.status]}}</td>
+              <td>{{item.notes}}</td> 
+              <td>{{item.createdDate}}</td> 
+             </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+ 
+
+
+
+
